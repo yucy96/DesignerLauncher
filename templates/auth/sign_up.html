@@ -1,0 +1,86 @@
+{% extends 'headfoot.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block main %}
+{% if form.password.errors or form.first_name.errors or form.last_name.errors or form.email.errors or form.confirm.errors%}
+    <br>
+    <div class="alert alert-dark alert-dismissible" style="background-color: #9d9d9d; margin-left: 10%; margin-right: 10%" role="alert">
+    <ul class="errors">
+        {% for error in form.first_name.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        {% for error in form.last_name.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        {% for error in form.email.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        {% for error in form.password.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        {% for error in form.confirm.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        <button type="button" class="close" data-dismiss="alert" style="top: -20px; color: black; font-size: 30px" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </ul>
+    </div>
+{% endif %}
+
+            <br/><br/><br/>
+            {% block content %}
+            <div class="main-content">
+                <div class="container">
+                    <div class="w3layouts-two-grids">
+                        <div class="mid-class">
+                            <div class="txt-left-side">
+                                <h2><b> Register Now </b></h2>
+                                <p>Welcome to join Designer Launcher! Sign up to explore a wonderful world!</p>
+                                <form action="/register" method="post" class="form" role="form"> <!-- TODO: take login for temp, DO go to build your profile -->
+                                    {{ form.csrf_token }}
+                                    <div class="form-left-to-w3l">
+                                        <span class="fa fa-user" aria-hidden="true"></span>
+                                        {{ form.first_name(placeholder="First name") }}
+{#                                        <input type="user_name" name="first_name" placeholder="First name" required="">#}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="form-left-to-w3l">
+                                        <span class="fa fa-user" aria-hidden="true"></span>
+                                        {{ form.last_name(placeholder="Last name") }}
+{#                                        <input type="user_name" name="last_name" placeholder="Last name" required="">#}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="form-left-to-w3l">
+{#                                        <span class="fa fa-envelope-o" aria-hidden="true"></span>#}
+{#                                        <input type="email" name="email" placeholder="Email" required="">#}
+{#                                        <div class="clear"></div>#}
+                                         <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                        {{ form.email(placeholder="Email") }}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="form-left-to-w3l ">
+
+                                        <span class="fa fa-lock" aria-hidden="true"></span>
+{#                                        <input type="password" name="password" placeholder="Password" required="">#}
+                                        {{ form.password(placeholder="Password") }}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="form-left-to-w3l ">
+
+                                        <span class="fa fa-lock" aria-hidden="true"></span>
+{#                                        <input type="password" name="password" placeholder="Confirm Password" required="">#}
+                                        {{ form.confirm(placeholder="Confirm password") }}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="login_btnn">
+                                        <button class="btnn_button" type="submit">Sign up</button>
+                                    </div>
+                                </form>
+                            </div> <!-- text-left-side -->
+                            <div class="img-right-side">
+                                <h3><b>Designer Launcher</b></h3>
+                                <p>Join thousands of designers here are Designer launcher! Share your ideas and get appreciated!</p>
+                                <img src="../../static/img/log_in/login.png" class="img-fluid" alt="">
+                            </div>
+                        </div> <!-- mid class -->
+                    </div> <!-- w3layouts -->
+                </div> <!-- container -->
+            </div>> <!-- main content -->
+            {% endblock %}
+        <br/><br/><br/>
+{% endblock %}

@@ -1,0 +1,296 @@
+{% extends 'headfoot.html' %}
+{% block main %}
+            <div class="main-content">
+                <div class="row user-work-info">
+                    <br/><br/><br/><br/>
+                        <img class="img-fluid main-work-user-img" src="../../static/img/user/team-member2.jpg">
+                        <h3><b>{{ user.first_name }} {{ user.last_name }}</b></h3>
+                        <div class="row" id="user-small-info">
+                            <i class="fa fa-user"></i>&nbsp;<a href="personal_connection.html">Connections: 320</a>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-heart-o"></i>&nbsp;<a href="personal_message.html">Likes: 1500</a>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-star-o"></i>&nbsp;<a href="personal_message.html">Saves: 2100</a>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-eye"></i>&nbsp;<a href="/user_work/{{ user.id }}">Work: {{ for_sale_works|length + non_sale_works|length }}</a>&nbsp;&nbsp;&nbsp;
+                        </div><br/>
+                    <div class="row">
+                    {% if user.id == visitor.id %}
+                        <a href="/post_work"><button class="btn btn-white">Post New work</button></a>&nbsp;
+                    {% else %}
+                        <a href=""><button class="btn btn-white">Follow</button></a>&nbsp;
+                        <a href=""><button class="btn btn-white">Connect</button></a>&nbsp;
+                        <a href=""><button class="btn btn-white">Message</button></a>&nbsp;
+                    {% endif %}
+                    </div><br/><br/>
+                </div>
+
+                <!--/search_form -->
+                <div id="search_form" class="container" style="text-align: center;">
+                    <h2><b>SEARCH FOR CERTAIN WORK</b></h2>
+                    <form action="" method="post">
+                        <input type="text" name="Keywords" placeholder="Keyword(s)" required="">
+                        <input class="text" name="Stage" type="text" placeholder="Stage" required="">
+                        <input class="text" name="Time" type="text" placeholder="mm/dd/yyyy" required="">
+                        <button type="submit" class="btn btn-white"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <!--//search_form -->
+                <section class="popular-deals section bg-gray">
+                    <div class="container bg-red-gray">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="section-title">
+                                    <h2 style="text-align: center; text-transform: uppercase;"><b>WORKS FOR SALE</b></h2>
+                                    <p style="text-align: center;">Showing all your work. Start browsing and Editing!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"> Sort by <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="sort_criteria">Likes</li>
+                                    <li class="sort_criteria">Saves</li>
+                                    <li class="sort_criteria">Buyer Num</li>
+                                    <li class="sort_criteria">Time</li>
+                                </ul>
+                            </div>&nbsp;&nbsp;
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"> Filter by <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="sort_criteria">Draft Stage</li>
+                                <li class="sort_criteria">Sample Stage</li>
+                                <li class="sort_criteria">Final Stage</li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <br/>
+                        <div class="row">
+                        <!-- offer 01 -->
+                            {% for sale, work in for_sale_works %}
+                            <div class="col-sm-12 col-lg-4">
+                            <!-- product card -->
+                                <div class="product-item bg-light" style="background: white">
+                                    <div class="card">
+                                        <div class="thumb-content">
+                                        <!-- <div class="price">$200</div> -->
+                                            <a href="">
+                                                <img class="card-img-top img-fluid" src={{ work.cover_image }} style="width: 100%; height: 30vw; object-fit: cover;" alt="Card image cap">
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title"><a href="event_detail.html">{{ work.name }}</a></h4>
+                                            <ul class="list-inline product-meta">
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-calendar"></i>Time: {{ work.time }}</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-heart"></i>Likes: 260</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-star"></i>Save: 300</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-plus-square"></i>Stage: {{ work.phase }}</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-user"></i>Buyers: 20</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    {% if sale.final_price %}
+                                                        <a href=""><i class="fa fa-dollar"></i>Price: {{ sale.final_price }}</a>
+                                                    {% else %}
+                                                        <a href=""><i class="fa fa-dollar"></i>Expected Price: {{ sale.expected_price }}</a>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                            <p class="card-text">{{ work.short_description }}</p>
+                                            {% if user.id == visitor.id %}
+                                            <ul class="list-inline product-meta" style="text-align: right; margin-top: 15px; margin-bottom: 0px;">
+                                                <li class="list-inline-item">
+                                                    <a href="edit_work.html"><i class="fa fa-pencil"></i>Edit</a>
+                                                </li>
+<!--                                                <li class="list-inline-item">-->
+<!--                                                    &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--                                                    <button style="padding: 0; border: none; background: none; color: #888; font-size: 12px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i>Delete</button>-->
+<!--                                                    &lt;!&ndash; Modal &ndash;&gt;-->
+<!--                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--                                                      <div class="modal-dialog modal-dialog-centered" role="document" style="text-align: center">-->
+<!--                                                        <div class="modal-content">-->
+<!--                                                          <div class="modal-body">-->
+<!--                                                              <h3>Are you sure you want to delete <em>{{ work.name }}</em></h3>-->
+<!--                                                              <h5>You will not be able to recover it once it is deleted</h5>-->
+<!--                                                          </div>-->
+<!--                                                          <div class="modal-footer">-->
+
+<!--                                                              <form class="delete-work" action="/work/{{work.id}}/delete" method="POST">-->
+<!--                                                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>-->
+<!--                                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                                                                  <button class="btn btn-danger">Delete</button>-->
+<!--                                                              </form>-->
+<!--                                                          </div>-->
+<!--                                                        </div>-->
+<!--                                                      </div>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+                                            </ul>
+                                            {% endif %}
+                                        </div> <!-- end of card-body -->
+                                    </div> <!-- end of card -->
+                                </div> <!-- end of product-item -->
+                            </div> <!-- end of first product -->
+                            {% endfor %}
+                        </div> <!-- end of row -->
+
+                        <br/>
+
+
+                    </div> <!-- end of container -->
+                    <!-- Pagination -->
+                    <nav class="page_navigation" aria-label="Page navigation example">
+                        <ul class="pagination pagination-template d-flex justify-content-center">
+                            <li class="page-item"><a href="#" class="page-roll"> <i class="fa fa-angle-left"></i></a></li>
+                            <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-roll"> <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <section class="popular-deals section bg-gray">
+                    <div class="container bg-red-gray">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="section-title">
+                                    <h2 style="text-align: center; text-transform: uppercase;"><b>WORKS NOT FOR SALE</b></h2>
+                                    <p style="text-align: center;">Showing all your work. Start browsing and Editing!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"> Sort by <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="sort_criteria">Likes</li>
+                                    <li class="sort_criteria">Saves</li>
+<!--                                    <li class="sort_criteria">Buyer Num</li>-->
+                                    <li class="sort_criteria">Time</li>
+                                </ul>
+                            </div>&nbsp;&nbsp;
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"> Filter by <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="sort_criteria">Draft Stage</li>
+                                <li class="sort_criteria">Sample Stage</li>
+                                <li class="sort_criteria">Final Stage</li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <br/>
+                        <div class="row">
+                        <!-- offer 01 -->
+                            {% for work in non_sale_works %}
+                            <div class="col-sm-12 col-lg-4">
+                            <!-- product card -->
+                                <div class="product-item bg-light" style="background: white">
+                                    <div class="card">
+                                        <div class="thumb-content">
+                                        <!-- <div class="price">$200</div> -->
+                                            <a href="">
+                                                <img class="card-img-top img-fluid" src={{ work.cover_image }} style="width: 100%; height: 30vw; object-fit: cover;" alt="Card image cap">
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title"><a href="event_detail.html">{{ work.name }}</a></h4>
+                                            <ul class="list-inline product-meta">
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-calendar"></i>Time: {{ work.time }}</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-heart"></i>Likes: 260</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-star"></i>Save: 300</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href=""><i class="fa fa-plus-square"></i>Stage: {{ work.phase }}</a>
+                                                </li>
+<!--                                                <li class="list-inline-item">-->
+<!--                                                    <a href=""><i class="fa fa-user"></i>Buyers: 20</a>-->
+<!--                                                </li>-->
+<!--                                                <li class="list-inline-item">-->
+<!--                                                    <a href=""><i class="fa fa-dollar"></i>Price: 10</a>-->
+<!--                                                </li>-->
+                                            </ul>
+                                            <p class="card-text">{{ work.short_description }}</p>
+                                            {% if user.id == visitor.id %}
+                                            <ul class="list-inline product-meta" style="text-align: right; margin-top: 15px; margin-bottom: 0px;">
+                                                <li class="list-inline-item">
+                                                    <a href="edit_work.html"><i class="fa fa-pencil"></i>Edit</a>
+                                                </li>
+                                                <li class="list-inline-item">
+<!--                                                    <form class="delete-work" action="/work/{{work.id}}/delete" method="POST">-->
+<!--                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>-->
+<!--                                                        <button style="padding: 0; border: none; background: none; color: #888; font-size: 12px;"><i class="fa fa-trash"></i>Delete</button>-->
+<!--                                                    </form>-->
+                                                     <!-- Button trigger modal -->
+                                                    <button style="padding: 0; border: none; background: none; color: #888; font-size: 12px;" data-toggle="modal" data-target="#deleteprompt"><i class="fa fa-trash"></i>Delete</button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="deleteprompt" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                      <div class="modal-dialog modal-dialog-centered" role="document" style="text-align: center">
+                                                        <div class="modal-content">
+                                                          <div class="modal-body">
+                                                              <h3>Are you sure you want to delete <em>{{ work.name }}</em></h3>
+                                                              <h5>You will not be able to recover it once it is deleted</h5>
+                                                          </div>
+                                                          <div class="modal-footer">
+
+                                                              <form class="delete-work" action="/work/{{work.id}}/delete" method="POST">
+                                                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                  <button class="btn btn-danger">Delete</button>
+                                                              </form>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                            {% endif %}
+                                        </div> <!-- end of card-body -->
+                                    </div> <!-- end of card -->
+                                </div> <!-- end of product-item -->
+                            </div> <!-- end of first product -->
+                            {% endfor %}
+                        </div> <!-- end of row -->
+
+                        <br/>
+
+
+                    </div> <!-- end of container -->
+                    <!-- Pagination -->
+                    <nav class="page_navigation" aria-label="Page navigation example">
+                        <ul class="pagination pagination-template d-flex justify-content-center">
+                            <li class="page-item"><a href="#" class="page-roll"> <i class="fa fa-angle-left"></i></a></li>
+                            <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-roll"> <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+            </div> <!-- end of /.main-content -->
+            <br/><br/><br/>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'headfoot.html' %}
+{% block main %}
+            <!-- header start -->
+            <header id="header" class="header-wrapper home-parallax home-fade">
+                <div class="header-overlay"></div>
+                <div class="header-wrapper-inner">
+                    <div class="container">
+
+                        <div class="welcome-speech">
+                            <h1>Welcome to Designer Launcher!</h1>
+                            <p>A designer hub and a home</p>
+                            {% if not user.is_authenticated %}
+                            <a href="/login" class="btn btn-white">
+                                Sign in
+                            </a>
+                            <a href="/register" class="btn btn-white">
+                                Sign up
+                            </a>
+                            {% endif %}
+                        </div><!-- /.intro -->
+                        
+                    </div><!-- /.container -->
+
+                </div><!-- /.header-wrapper-inner -->
+            </header>
+            <!-- /#header -->
+
+            <div class="main-content">
+
+                <!--  begin intro section -->
+
+                <section class="intro bg-light-gray">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../static/img/intro/intro.jpg" class="img-responsive center-block" alt="intro">
+                            </div>
+
+                            <div class="col-md-7">
+                                <div class="intro-description">
+                                    <h2><b>Brief introduction</b></h2>
+                                    <p>
+                                        Designer launcher is a website that aims to help designers connect with each other, find inspiration and gain publicity. Find like-minded people and show your talent here!
+                                    </p>
+
+                                    <ul class="points">
+                                        <li>
+                                            <b>Features</b>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            Participate in/ host fashion-related events
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            Find your dream jobs
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            Learn about latest trend and find inspiration
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            Find a mentor/ recruit talents
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            Post your work and find potential customers
+                                        </li>
+                                    </ul> <!-- end of /.points -->
+                                </div> <!-- end of /.intro-description -->
+                            </div>
+                        </div>
+                    </div> <!-- end of /.container -->
+                </section> 
+                <!--  end of intro section -->
+
+                <!-- begin of what's new section -->
+                <section class="bg-red-gray">
+                    <div class="container">
+
+                        <div class="headline text-center">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <h2 class="section-title"><b>What's new</b></h2>
+                                    <p class="section-sub-title">
+                                        Learn about latest updates of our site
+                                    </p> <!-- /.section-sub-title -->
+                                </div>
+                            </div>
+                        </div> <!-- /.headline -->
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h3 style="text-align: center;"><b>SS 2020 Runway Trends</b></h3>
+                                <p>
+                                    Come and learn about the latest trend for the fabulous SS 2020 collection here at designer launcher! We have AI generated tend analysis reports using neural network model trained by image data collected from major fashion sites all over the world including Vogue, Elle, etc.
+                                </p>
+                                <ul class="points">
+                                    <li class="newspoints">what's the seasonal color</li>
+                                    <li class="newspoints">what are the most frequent items</li>
+                                    <li class="newspoints">what are the hottest brands</li>
+                                </ul>
+                                <div style="text-align: center;">
+                                <button class="btn btn-white"><a href="">Learn more</a></button>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="align-self: left;">
+                                <img src="../static/img/front_news/front_1.jpg" class="img-responsive center-block" alt="news">
+                            </div>
+                        </div>
+                    </div> <!-- end of container -->
+                    <br/><br/><br/><br/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5" style="align-self: left;">
+                                <img src="../static/img/front_news/front_2.jpg" class="img-responsive center-block" alt="news">
+                            </div>
+                            <div class="col-md-7">
+                                <h3 style="text-align: center;"><b>100+ exciting new fashion events</b></h3>
+                                <p>
+                                    We have added 100+ new and exciting fashion-related events in the events section! Come and find if you are interested in any of them! These newly added events include open-to-public fashion shows, drapping and pattern making seminars, speeches given by famous designers on sustainable fashion, etc.
+                                </p>
+                                <ul class="points">
+                                    <li class="newspoints">small-size seminars for enhancing your skills</li>
+                                    <li class="newspoints">open-to-public fashion shows</li>
+                                    <li class="newspoints">speeches given by famous designers</li>
+                                </ul>
+                                <div style="text-align: center;">
+                                <button class="btn btn-white">Learn more</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/><br/><br/>
+                    </div> <!-- end of container -->
+                </section>
+                            
+            </div> <!-- end of /.main-content -->
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'headfoot.html' %}
+{% block main %}
+{% if form.password.errors or form.email.errors%}
+    <br>
+    <div class="alert alert-dark alert-dismissible" style="background-color: #9d9d9d; margin-left: 10%; margin-right: 10%" role="alert">
+    <ul class="errors">
+        {% for error in form.email.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        {% for error in form.password.errors %}
+            <li>{{ error }}</li>{% endfor %}
+        <button type="button" class="close" data-dismiss="alert" style="top: -20px; color: black; font-size: 30px" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </ul>
+    </div>
+{% endif %}
+            <br/><br/><br/>
+            {% block content %}
+            <div class="main-content">
+                <div class="container">
+                    <div class="w3layouts-two-grids">
+                        <div class="mid-class">
+                            <div class="txt-left-side">
+                                <h2><b> Login Here </b></h2>
+                                <p>Welcom to Designer Launcher! Log in to explore a wonderful world!</p>
+                                <form action="/login" method="post">
+                                    {{ form.csrf_token }}
+                                    <div class="form-left-to-w3l">
+                                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                        {{ form.email(placeholder="Email") }}
+{#                                        <input type="email" name="email" placeholder="Email" required="">#}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="form-left-to-w3l ">
+
+                                        <span class="fa fa-lock" aria-hidden="true"></span>
+{#                                        <input type="password" name="password" placeholder="Password" required="">#}
+                                        {{ form.password(placeholder="Password") }}
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="main-two-w3ls">
+                                        <div class="left-side-forget">
+                                            <input type="checkbox" class="checked">
+                                            <span class="remenber-me">Remember me </span>
+                                        </div>
+                                        <div class="right-side-forget">
+                                            <a href="#" class="for">Forgot password?</a>
+                                        </div>
+                                    </div>
+                                    <div class="login_btnn">
+                                        <button class="btnn_button" type="submit">Login </button>
+                                    </div>
+                                </form>
+                                <div class="w3layouts_more-buttn">
+                                    <h3>Don't have an account..?
+                                        <br/><a href="/register"><b>Register Here</b></a>
+                                    </h3>
+                                </div>
+                            </div> <!-- text-left-side -->
+                            <div class="img-right-side">
+                                <h3><b>Designer Launcher</b></h3>
+                                <p>Join thousands of designers here are Designer launcher! Share your ideas and get appreciated!</p>
+                                <img src="../../static/img/log_in/login.png" class="img-fluid" alt="">
+                            </div>
+                        </div> <!-- mid class -->
+                    </div> <!-- w3layouts -->
+                </div> <!-- container -->
+            </div>> <!-- main content -->
+            {% endblock %}
+        <br/><br/><br/>
+{% endblock %}

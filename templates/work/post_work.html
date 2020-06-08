@@ -1,0 +1,297 @@
+{% extends 'headfoot.html' %}
+{% block main %}
+<script>
+    var phase;
+    var forsale;
+
+    window.onload = function(){
+        var form = document.getElementById("phase_1_form");
+        console.log(form);
+        var for_sale = document.getElementById("forsale_div");
+        var phase_buttons = document.getElementById("phase_div");
+        console.log(for_sale);
+        console.log(for_sale.style);
+        for_sale.style.display = "none";
+        form.style.display = "none";
+    }
+
+    function clicked_phase(phase_str){
+        phase = phase_str;
+        console.log(phase);
+        document.getElementById("phase_div").style.display= "none";
+        document.getElementById("forsale_div").style.display = "block";
+    }
+
+    function clicked_sale(sale_str){
+        forsale = sale_str;
+        console.log(forsale);
+        document.getElementById("forsale_div").style.display = "none";
+        document.getElementById("phase_1_form").style.display = "block";
+    }
+
+</script>
+            <!-- site-navigation end -->
+            <br/><br/><br/>
+            <div class="main-content">
+                <div class="post_work-banner-main">
+                    <div class="he-center-container">
+                        <h1 class="header-w3ls">Design Information Form</h1>
+                        <div class="row" style="text-align: center; margin-bottom: 30px; padding-bottom: 400px;" id="phase_div">
+                            <p style="color: #000;">Please choose the phase of work you want to upload (only choose one)</p>
+                            <button class="btn btn-white" id="phase_1" onclick="clicked_phase(this.id)">Phase One (sketch & flat)</button>
+                            <button class="btn btn-white" id="phase_2" onclick="clicked_phase(this.id)">Phase Two (sample)</button>
+                            <button class="btn btn-white" id="phase_3" onclick="clicked_phase(this.id)">Phase Three (ready-to-wear garment)</button>
+                        </div>
+                        <div class="row" style="text-align: center; margin-bottom: 30px; padding-bottom: 400px;" id="forsale_div">
+                            <p>Please choose whether you want this item for sale?</p>
+                            <button class="btn btn-white" id="for_sale" onclick="clicked_sale(this.id)">For Sale</button>
+                            <button class="btn btn-white" id="not_for_sale" onclick="clicked_sale(this.id)">Not For Sale</button>
+                        </div>
+                        <div class="he-content-top" id="phase_1_form">
+                            <div class="content-w3ls">
+                                <form action="#" method="post">
+                                <div class="he-form-w3ls">
+                                        <div class="content-wthree1">
+                                            <div class="grid-agileits1">
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Work Name <span>*</span></label>
+                                                    <input type="text" id="he-name" name="work_name" placeholder="Work Name" title="Please enter the name of your work" required="">
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Num of purchases<span>*</span></label>
+                                                    <input type="text" id="he-name" name="purchases_num_draft" placeholder="draft to sample" title="Please enter the number of purchases to update stage" required="">
+                                                    <input type="text" id="he-name" name="purchases_num_sample" placeholder="sample to final" title="Please enter the number of purchases to update stage" required="">
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Purchase Price <span>*</span></label>
+                                                    <input type="text" id="he-name" name="price" placeholder="Purchase price" title="Please enter the purchase price of your work" required="">
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Gender <span>*</span></label>
+                                                    <select id="he-select" class="he-form-control">
+                                                        <option></option>
+                                                        <option>Women</option>
+                                                        <option>Men</option>
+                                                    </select>
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Category <span>*</span></label>
+                                                    <select id="he-select" class="he-form-control">
+                                                        <option></option>
+                                                        <option>Top</option>
+                                                        <option>Pants</option>
+                                                        <option>Shoes</option>
+                                                        <option>Bags</option>
+                                                        <option>Skirts</option>
+                                                        <option>Dresses</option>
+                                                        <option>Coats/Jackets</option>
+                                                    </select>
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Design Style <span>*</span></label>
+                                                    <select id="he-select" class="he-form-control">
+                                                        <option></option>
+                                                        <option>Elegant</option>
+                                                        <option>Sporty</option>
+                                                        <option>Simplicity</option>
+                                                        <option>Gothic</option>
+                                                        <option>Futuristic</option>
+                                                        <option>POP</option>
+                                                        <option>Rococo</option>
+                                                        <option>Baroque</option>
+                                                        <option>Bohemian</option>
+                                                        <option>Street</option>
+                                                        <option>Rock/ Punk</option>
+                                                        <option>Vintage</option>
+                                                        <option>Artsy</option>
+                                                        <option>Sexy</option>
+                                                        <option>Casual</option>
+                                                        <option>Business</option>
+                                                        <option>Tomboy</option>
+                                                        <option>Preppy</option>
+                                                        <option>Other</option>
+                                                    </select>
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Cover Image <span>*</span></label>
+                                                    <input type="text" id="he-name" name="cover" placeholder="Cover image" title="Please enter the name of file of your cover image" required="">
+                                                </div>
+                                                <div class="he-form-control">
+                                                    <label class="he-header">Materials <span>*</span></label>
+                                                    <nobr>
+                                                        <input type="text" id="he-name" name="part1" placeholder="part of clothes" title="Please enter a part of the clothes(sleeve/collar)" required="" style="width: 35%;">
+                                                        <input type="text" id="he-name" name="material_list1" placeholder="materials" title="Please enter the list of the materials you use to make this part" required="" style="width: 55%;">
+                                                    </nobr>
+                                                    <nobr>
+                                                        <input type="text" id="he-name" name="part2" placeholder="part of clothes" title="Please enter a part of the clothes(sleeve/collar)" required="" style="width: 35%;">
+                                                        <input type="text" id="he-name" name="material_list2" placeholder="materials" title="Please enter the list of the materials you use to make this part" required="" style="width: 55%;">
+                                                    </nobr>
+                                                    <nobr>
+                                                        <input type="text" id="he-name" name="part2" placeholder="part of clothes" title="Please enter a part of the clothes(sleeve/collar)" required="" style="width: 35%;">
+                                                        <input type="text" id="he-name" name="material_list2" placeholder="materials" title="Please enter the list of the materials you use to make this part" required="" style="width: 55%;">
+                                                    </nobr>
+                                                    <nobr>
+                                                        <input type="text" id="he-name" name="part2" placeholder="part of clothes" title="Please enter a part of the clothes(sleeve/collar)" required="" style="width: 35%;">
+                                                        <input type="text" id="he-name" name="material_list2" placeholder="materials" title="Please enter the list of the materials you use to make this part" required="" style="width: 55%;">
+                                                    </nobr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="he-form-w3ls-1">
+                                        <div class="he-form-control">
+                                            <label class="he-header">Sizes <span>*</span></label>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type1" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_1" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_1" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_1" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_1" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_1" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_1" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_1" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type2" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_2" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_2" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_2" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_2" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_2" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_2" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_2" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type3" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_3" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_3" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_3" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_3" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_3" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_3" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_3" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type4" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_4" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_4" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_4" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_4" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_4" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_4" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_4" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type5" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_5" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_5" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_5" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_5" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_5" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_5" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_5" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                                <nobr>
+                                                    <input type="text" id="he-name" name="size_type6" placeholder="size" title="Please enter your size type(S/M/L)" required="" style="width: 10%;">
+                                                    <input type="text" id="he-name" name="shoulder_6" placeholder="shoulder" title="Please enter the your shoulder measurement" required="" style="width: 17%;">
+                                                    <input type="text" id="he-name" name="bust_6" placeholder="bust" title="Please enter the your bust measurement" required="" style="width: 11%;">
+                                                    <input type="text" id="he-name" name="waist_6" placeholder="waist" title="Please enter the your waist measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="hip_6" placeholder="hip" title="Please enter the your hip measurement" required="" style="width: 9%;">
+                                                    <input type="text" id="he-name" name="length_6" placeholder="length" title="Please enter the your length measurement" required="" style="width: 13%;">
+                                                    <input type="text" id="he-name" name="width_6" placeholder="width" title="Please enter the your width measurement" required="" style="width: 12%;">
+                                                    <input type="text" id="he-name" name="height_6" placeholder="height" title="Please enter the your height measurement" required="" style="width: 13%;">
+                                                </nobr>
+                                        </div>
+
+                                        <div class="he-form-control">
+                                                <label class="he-header">Tags <span>*</span></label>
+                                                <input type="text" id="he-name" name="tag" placeholder="Tag1,Tag2" title="Please enter your work tags" required="">
+                                        </div>
+
+                                        <div class="he-form-control">
+                                                <label class="he-header">Colors <span>*</span></label>
+                                                <input type="text" id="he-name" name="color" placeholder="Color1,Color2" title="Please enter the color of your work" required="">
+                                        </div>
+
+                                        <div class="he-form-control">
+                                                <label class="he-header">Pictures <span>*</span></label><br/><br/>
+                                                <input type="file" id="des_pic" name="pics" multiple="multiple" class="file" required="">
+                                        </div>
+
+                                    </div>
+                                    <div class="he-form-control Insurance">
+                                        <label class="he-header">Overall Description<span>*</span></label>
+                                        <textarea id="he-textarea"  name="overall_description" placeholder="Describe the work in general" title="" required="">
+                                        </textarea>
+                                    </div>
+                                    <div class="he-form-control Insurance">
+                                        <label class="he-header">Inspiration<span>*</span></label>
+                                        <textarea id="he-textarea"  name="inspiration" placeholder="Describe the inspiration of this work" title="" required="">
+                                        </textarea>
+                                    </div>
+                                    <div class="he-form-control Insurance">
+                                        <label class="he-header">Details<span>*</span></label>
+                                        <textarea id="he-textarea"  name="detail" placeholder="Describe the details of this work" title="" required="">
+                                        </textarea>
+                                    </div>
+                                    <div class="he-form-control Insurance">
+                                        <label class="he-header">Vision<span>*</span></label>
+                                        <textarea id="he-textarea"  name="vision" placeholder="Describe the occasion in which this piece would be wore and kind of person that will wear it" title="" required="">
+                                        </textarea>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <input id="he-submit" type="submit" value="Post the work">
+                                    </div>
+                                    </form>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div><!-- end of main content -->
+        <script type="text/javascript" src="../static/js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+        <script src="../../static/bootstrap-fileinput/js/plugins/piexif.js" type="text/javascript"></script>
+        <script src="../../static/bootstrap-fileinput/js/plugins/sortable.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../../static/bootstrap-fileinput/js/fileinput.min.js"></script>
+        <script src="../../static/bootstrap-fileinput/js/locales/fr.js" type="text/javascript"></script>
+        <script src="../../static/bootstrap-fileinput/js/locales/es.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../static/js/owl.carousel.js"></script>
+        <script type="text/javascript" src="../static/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="../../static/js/wickedpicker.js"></script>
+        <!-- Calendar -->
+        <link rel="stylesheet" href="../../static/css/jquery-ui.css" />
+        <script src="../../static/js/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $( "#he-datepicker,#he-datepicker1,#he-datepicker2,#he-datepicker3" ).datepicker();
+            });
+        </script>
+        <!-- //Calendar -->
+        <script type="text/javascript">
+            document.getElementsByClassName("timepicker").wickedpicker({twentyFour: false});
+        </script>
+        <script type="text/javascript">
+            document.getElementById("des_pic").fileinput({
+                language: 'en',
+                uploadUrl: 'http://localhost:8080/sign',
+                allowedFileExtensions : ['png', 'jpg','jpeg'],
+                showCaption: false,
+                showUpload: true,
+                showRemove: true,
+                showClose: true,
+                enctype: 'multipart/form-data',
+                uploadAsync:false,
+                layoutTemplates: {
+                    actionUpload: ''
+                },
+                browseClass: 'btn btn-white',
+                maxFileCount: 3,
+                minFileCount : 1,
+            }).on('fileuploaded',function(res) {
+                console.log(res);
+            });
+        </script>
+
+{% endblock %}
